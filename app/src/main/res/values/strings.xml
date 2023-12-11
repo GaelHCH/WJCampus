@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">WJCampus</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <color name="celadon">#AFE1AF</color>
+    <color name="LincolnGreen">#478778</color>
+    <color name="ForestGreen">#228B22</color>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

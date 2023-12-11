@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scheduleScreenContainer"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.schedule.ScheduleFragment">
+
+
+    <ScrollView
+        android:id="@+id/scheduleScroll"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="2dp"
+        android:overScrollMode="never"
+        android:scrollbars="vertical"
+        android:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/scheduleScrollLayout"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!--The allSchedulesScreen button-->
+
+            <TextView
+                android:id="@+id/allScedulesBTN"
+                android:layout_width="122dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="-20dp"
+                android:text="All Schedules"
+                android:textColor="#1F51FF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.889"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/scheduleScreenTitle"
+                android:layout_width="378dp"
+                android:layout_height="41dp"
+                android:layout_marginTop="80dp"
+                android:text="Today's Schedule"
+                android:textAlignment="center"
+                android:textColor="#AFE1AF"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/eventScheduleContainer"
+                android:layout_width="420dp"
+                android:layout_height="1047dp"
+                android:layout_marginTop="152dp"
+                android:background="#AFE1AF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/arrowRightS"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="48dp"
+                    android:background="#228B22"
+                    android:src="@drawable/baseline_arrow_circle_right_24"
+                    android:translationX="10dp"
+                    android:translationY="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.12" />
+
+                <ImageButton
+                    android:id="@+id/arrowLeftS"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="#228B22"
+                    android:src="@drawable/baseline_arrow_circle_left_24"
+                    android:translationX="60dp"
+                    android:translationY="50dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.122" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="316dp"
+                    android:layout_height="37dp"
+                    android:layout_marginTop="16dp"
+                    android:text="September 23, 2023"
+                    android:textAlignment="center"
+                    android:textColor="#F8F3F3"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.604"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/todaySchedule"
+                    android:layout_width="256dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="72dp"
+                    android:src="@drawable/regularschedule1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/eventsLBL"
+                    android:layout_width="316dp"
+                    android:layout_height="37dp"
+                    android:layout_marginBottom="580dp"
+                    android:text="Upcoming Events"
+                    android:textAlignment="center"
+                    android:textColor="#F8F3F3"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/todaySchedule"
+                    app:layout_constraintVertical_bias="0.197" />
+
+                <ImageView
+                    android:id="@+id/event1"
+                    android:layout_width="276dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="68dp"
+                    android:src="@drawable/hardcodeevents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eventsLBL" />
+
+                <ImageView
+                    android:id="@+id/event2"
+                    android:layout_width="276dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="68dp"
+                    android:src="@drawable/hardcodeevents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/event1" />
+
+                <ImageView
+                    android:id="@+id/event3"
+                    android:layout_width="276dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="68dp"
+                    android:src="@drawable/hardcodeevents"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/event2" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+</RelativeLayout>
