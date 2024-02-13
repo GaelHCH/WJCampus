@@ -6,6 +6,7 @@
     <color name="celadon">#AFE1AF</color>
     <color name="LincolnGreen">#478778</color>
     <color name="ForestGreen">#228B22</color>
+    <color name="GreyTint">#D1D0D0</color>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

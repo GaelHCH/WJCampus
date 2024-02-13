@@ -9,6 +9,7 @@ import com.example.wjcampus.ui.home.HomeFragment;
 import com.example.wjcampus.ui.map.MapFragment;
 import com.example.wjcampus.ui.schedule.AllSchedulesFragment;
 import com.example.wjcampus.ui.schedule.ScheduleFragment;
+import com.example.wjcampus.ui.settings.SettingsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment = new HomeFragment();
     MapFragment mapFragment = new MapFragment();
     ScheduleFragment scheduleFragment = new ScheduleFragment();
+    SettingsFragment settingsFragment = new SettingsFragment();
 
     public FragmentManager fragmentManager = getSupportFragmentManager();
 
@@ -73,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
                 else if (id==R.id.schedule) {
                     //System.out.println("It gets on the map click check in MainActivity");
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, scheduleFragment).commit();
+                    return true;
+                }
+                else if (id==R.id.settings) {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, settingsFragment).commit();
                     return true;
                 }
 
