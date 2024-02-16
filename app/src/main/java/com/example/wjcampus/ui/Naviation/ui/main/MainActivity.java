@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     HomeFragment homeFragment = new HomeFragment();
     MapFragment mapFragment = new MapFragment();
     ScheduleFragment scheduleFragment = new ScheduleFragment();
+
     SettingsFragment settingsFragment = new SettingsFragment();
 
     public FragmentManager fragmentManager = getSupportFragmentManager();
