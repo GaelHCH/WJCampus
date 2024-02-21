@@ -1,9 +1,11 @@
 package com.example.wjcampus.ui.settings;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.text.method.ScrollingMovementMethod;
@@ -54,11 +56,44 @@ public class SettingsFragment extends Fragment {
                 if (isDarkModeOn) {
                     System.out.println("Dark Mode switch condition - Turn OFF");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
+//                    Button compLabBtn = (Button) view.findViewById(R.id.compLabBtn)
                     isDarkModeOn = false;
                 }
                 else {
                     System.out.println("Dark Mode switch condition - Turn ON");
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+                    //Individually change each component that needs change once dark mode is turned on : (
+                    //Home screen components ***
+
+                    //Background
+                    ConstraintLayout homeScreenMainContainerView = (ConstraintLayout) view.findViewById(R.id.homeScreenMainContainer);
+                    homeScreenMainContainerView.setBackgroundColor(Color.RED);
+                    //Home-screen nodes background
+
+                    //Home-screen nodes text & buttons
+
+                    //Schedule screen components ***
+
+                    //Schedule screen background #2 + buttons
+
+                    //All Schedule screen components ***
+
+                    //Background #2 + butons
+
+                    //Map Screen components ***
+
+                    //Background #2 + buttons
+
+                    //Settings screen components ***
+
+                    //Text + dividers
+
+                    //Buttons
+
+                    //Background #2
                     isDarkModeOn = true;
                 }
             }
