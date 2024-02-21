@@ -1,31 +1,33 @@
 package com.example.wjcampus.ui.map;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SchoolMap {
-    public static String[][][] map = new String[3][64][160];
-    public static String[][][] tempMap = new String[3][64][160];
+    public static String[][][] map = new String[3][64][150];
+    public static String[][][] tempMap = new String[3][64][150];
 
-    // Constructor to initialize the map with 64 rows and 160 columns of "."
+    // Constructor to initialize the map with 64 rows and 150 columns of "."
     public SchoolMap() {
-        map[0] = new String[64][160];
-        map[1] = new String[64][160];
-        map[2] = new String[64][160];
+        map[0] = new String[64][150];
+        map[1] = new String[64][150];
+        map[2] = new String[64][150];
         for (int i = 0; i < 64; i++) {
-            map[0][i] = new String[160];
-            map[1][i] = new String[160];
-            map[2][i] = new String[160];
-            for (int j = 0; j < 160; j++) {
+            map[0][i] = new String[150];
+            map[1][i] = new String[150];
+            map[2][i] = new String[150];
+            for (int j = 0; j < 150; j++) {
                 map[0][i][j] = ".";
                 map[1][i][j] = ".";
                 map[2][i][j] = ".";
             }
         }
 
-        drawBasementBorder();
-        drawMainBorder();
-        drawUpperBorder();
-        populateFloors();
+        //drawBasementBorder();
+        //drawMainBorder();
+        //drawUpperBorder();
         cloneMap(map);
     }
 
@@ -108,8 +110,8 @@ public class SchoolMap {
     // Draws wall borders for the main floor
     private void drawMainBorder() {
         // Main office
-        drawHorizontalLine(1, 60, 42, 45);
-        drawVerticalLine(1, 41, 54, 60);
+        drawHorizontalLine(1, 60, 40, 43);
+        drawVerticalLine(1, 39, 54, 60);
 
         // Media Center
         drawHorizontalLine(1, 60, 80, 84);
@@ -126,15 +128,15 @@ public class SchoolMap {
         drawVerticalLine(1, 79, 19, 23);
 
         // Top Center - Stairs
-        drawHorizontalLine(1, 8, 76, 87);
-        drawVerticalLine(1, 87, 8, 12);
+        drawHorizontalLine(1, 8, 76, 86);
+        drawVerticalLine(1, 86, 9, 10);
 
         // Top Left
         drawHorizontalLine(1, 5, 14, 26);
         drawVerticalLine(1, 13, 5, 15);
-        drawHorizontalLine(1, 5, 35, 36);
-        drawVerticalLine(1, 37, 5, 10);
-        drawVerticalLine(1, 35, 3, 5);
+        drawHorizontalLine(1, 8, 35, 36);
+        drawVerticalLine(1, 37, 8, 10);
+        drawVerticalLine(1, 35, 3, 8);
 
         // Music Room
         drawMusicRoom(1, 123, 128, 14, 17);
@@ -157,12 +159,12 @@ public class SchoolMap {
         drawVerticalLine(2, 87, 8, 12);
 
         // Top Left
-        drawVerticalLine(2, 31, 3, 5);
+        drawVerticalLine(2, 32, 3, 5);
         drawHorizontalLine(2, 5, 14, 31);
         drawVerticalLine(2, 13, 5, 15);
-        drawHorizontalLine(2, 5, 35, 36);
-        drawVerticalLine(2, 37, 5, 18);
-        drawVerticalLine(2, 35, 3, 5);
+        drawHorizontalLine(2, 8, 35, 36);
+        drawVerticalLine(2, 37, 8, 18);
+        drawVerticalLine(2, 35, 3, 8);
 
         // Bottom Right
         drawVerticalLine(2, 82, 43, 55);
@@ -172,7 +174,7 @@ public class SchoolMap {
         // Top Right Stairwell
         drawHorizontalLine(2, 23, 55, 75);
         drawVerticalLine(2, 75, 9, 23);
-        drawHorizontalLine(2, 47, 37, 44);
+        drawHorizontalLine(2, 47, 42, 44);
 
         // Courtyard 5
         drawVerticalLine(2, 16, 12, 19);
@@ -181,7 +183,7 @@ public class SchoolMap {
         drawVerticalLine(2, 16, 31, 42);
 
         // Courtyard 2
-        drawHorizontalLine(2, 26, 55, 75);
+        drawHorizontalLine(2, 26, 55, 76);
     }
 
 
@@ -197,8 +199,8 @@ public class SchoolMap {
         drawVerticalLine(0, 120, 20, 26);
 
         // Top Center - Stairs
-        drawHorizontalLine(0, 8, 76, 87);
-        drawVerticalLine(0, 87, 8, 12);
+        drawHorizontalLine(0, 8, 76, 86);
+        drawVerticalLine(0, 86, 8, 10);
 
         // Top Left
         drawVerticalLine(0, 32, 3, 5);
@@ -216,10 +218,9 @@ public class SchoolMap {
         // Portables
         drawVerticalLine(0, 4, 49, 53);
         drawVerticalLine(0, 7, 50, 63);
-        drawVerticalLine(0, 7, 50, 54);
-        drawHorizontalLine(0, 48, 4, 6);
+        drawHorizontalLine(0, 48, 4, 7);
         drawHorizontalLine(0, 50, 7, 12);
-        drawHorizontalLine(0, 63, 5, 6);
+        drawHorizontalLine(0, 63, 4, 6);
     }
 
     // Draws a horizontal line on the map
@@ -245,70 +246,70 @@ public class SchoolMap {
         }
     }
 
-    // Places a room object inside of the map array
-    private void placeRoom(Room room, int floorNum) {
-        String[][] floor = map[floorNum];
-
-        if (room.shape != null) {
-            for (int[] square : room.shape) {
-                for (int r = 0; r < square[3]; r++) {
-                    for (int c = 0; c < square[2]; c++) {
-                        if (63 - square[1] - r >= floor.length || 63 - square[1] - r < 0) {
-                            System.out.println("Bottom Y:" + square[2] + " r " + r);
-                            System.out.println(room.number);
-                            break;
-                        }
-                        if (square[0] + c >= floor[0].length || square[0] + c < 0) {
-                            System.out.println("Left X:" + square[0] + " c " + c);
-                            System.out.println(room.number);
-                            break;
-                        }
-                        String icon = "*";
-                        if (r == 0 || c == 0 || r + 1 == square[3] || c + 1 == square[2]) {
-                            icon = "#";
-                        }
-
-                        String currIcon = floor[63 - square[1] - r][square[0] + c];
-                        switch (currIcon) {
-                            case ".":
-                            case "#":
-                                floor[63 - square[1] - r][square[0] + c] = icon;
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
-            floor[64 - room.entrancesLoc.get(0)[1]][room.entrancesLoc.get(0)[0]] = "/";
-            map[floorNum] = floor;
-            return;
-        }
-
-        for (int r = 0; r < room.height; r++) {
-            for (int c = 0; c < room.width; c++) {
-                if (63 - room.bottomY - r >= floor.length || 63 - room.bottomY - r < 0) {
-                    System.out.println("Bottom Y:" + room.bottomY + " r " + r);
-                    System.out.println(room.number);
-                    break;
-                }
-                if (room.leftX + c >= floor[0].length || room.leftX + c < 0) {
-                    System.out.println("Left X:" + room.leftX + " c " + c);
-                    System.out.println(room.number);
-                    break;
-                }
-
-                String icon = "*";
-                if (r == 0 || c == 0 || r + 1 == room.height || c + 1 == room.width) {
-                    icon = "#";
-                }
-                floor[63 - room.bottomY - r][room.leftX + c] = icon;
-            }
-        }
-
-        floor[64 - room.entrancesLoc.get(0)[1]][room.entrancesLoc.get(0)[0]] = "/";
-        map[floorNum] = floor;
-    }
+//    // Places a room object inside of the map array
+//    private void placeRoom(Room room, int floorNum) {
+//        String[][] floor = map[floorNum];
+//
+//        if (room.shape != null) {
+//            for (int[] square : room.shape) {
+//                for (int r = 0; r < square[3]; r++) {
+//                    for (int c = 0; c < square[2]; c++) {
+//                        if (63 - square[1] - r >= floor.length || 63 - square[1] - r < 0) {
+//                            System.out.println("Bottom Y:" + square[2] + " r " + r);
+//                            System.out.println(room.number);
+//                            break;
+//                        }
+//                        if (square[0] + c >= floor[0].length || square[0] + c < 0) {
+//                            System.out.println("Left X:" + square[0] + " c " + c);
+//                            System.out.println(room.number);
+//                            break;
+//                        }
+//                        String icon = "*";
+//                        if (r == 0 || c == 0 || r + 1 == square[3] || c + 1 == square[2]) {
+//                            icon = "#";
+//                        }
+//
+//                        String currIcon = floor[63 - square[1] - r][square[0] + c];
+//                        switch (currIcon) {
+//                            case ".":
+//                            case "#":
+//                                floor[63 - square[1] - r][square[0] + c] = icon;
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                    }
+//                }
+//            }
+//            floor[64 - room.entrancesLoc.get(0)[1]][room.entrancesLoc.get(0)[0]] = "/";
+//            map[floorNum] = floor;
+//            return;
+//        }
+//
+//        for (int r = 0; r < room.height; r++) {
+//            for (int c = 0; c < room.width; c++) {
+//                if (63 - room.bottomY - r >= floor.length || 63 - room.bottomY - r < 0) {
+//                    System.out.println("Bottom Y:" + room.bottomY + " r " + r);
+//                    System.out.println(room.number);
+//                    break;
+//                }
+//                if (room.leftX + c >= floor[0].length || room.leftX + c < 0) {
+//                    System.out.println("Left X:" + room.leftX + " c " + c);
+//                    System.out.println(room.number);
+//                    break;
+//                }
+//
+//                String icon = "*";
+//                if (r == 0 || c == 0 || r + 1 == room.height || c + 1 == room.width) {
+//                    icon = "#";
+//                }
+//                floor[63 - room.bottomY - r][room.leftX + c] = icon;
+//            }
+//        }
+//
+//        floor[64 - room.entrancesLoc.get(0)[1]][room.entrancesLoc.get(0)[0]] = "/";
+//        map[floorNum] = floor;
+//    }
 
     public static int[] moveIn(int x, int y, Direction direction, int steps) {
         int[] newPosition = {x, y};
@@ -329,14 +330,11 @@ public class SchoolMap {
         return newPosition;
     }
 
-    public void populateFloors() {
-        for (int i = 0; i < 3; i++) {
-            int roomFloor = i;
-            Floors.getFloor(roomFloor).values().forEach((room) -> placeRoom(room, roomFloor));
-        }
-    }
+//    public void populateFloors() {
+//        for (int i = 0; i < 3; i++) {
+//            int roomFloor = i;
+//            Floors.getFloor(roomFloor).values().forEach((room) -> placeRoom(room, roomFloor));
+//        }
+//    }
 
 }
-
-
-

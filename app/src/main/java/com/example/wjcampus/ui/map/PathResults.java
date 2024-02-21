@@ -1,5 +1,8 @@
 package com.example.wjcampus.ui.map;
 
+
+import android.util.Pair;
+
 import java.util.List;
 public class PathResults {
     public List<Direction> directions;

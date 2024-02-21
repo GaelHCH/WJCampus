@@ -82,4 +82,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/destRoom" />
 
+    <com.ortiz.touchview.TouchImageView
+        android:id="@+id/pathView"
+        android:layout_width="357dp"
+        android:layout_height="228dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/printBTN"
+        app:layout_constraintVertical_bias="0.467"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <com.ortiz.touchview.TouchImageView
+        android:id="@+id/mapView"
+        android:layout_width="357dp"
+        android:layout_height="228dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/printBTN"
+        app:layout_constraintVertical_bias="0.467"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/floorUp"
+        android:onClick="floorUp"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="10dp"
+        app:icon="@android:drawable/arrow_up_float"
+        app:layout_constraintBottom_toTopOf="@+id/floorDown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mapView"
+        app:layout_constraintTop_toBottomOf="@+id/destRoom"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/floorDown"
+        android:onClick="floorDown"
+        style="@style/Widget.Material3.Button.TextButton.Icon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="96dp"
+        app:icon="@android:drawable/arrow_down_float"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/mapView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

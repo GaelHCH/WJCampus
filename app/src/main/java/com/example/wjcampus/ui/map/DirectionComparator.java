@@ -2,13 +2,14 @@ package com.example.wjcampus.ui.map;
 
 import java.util.Comparator;
 
+
 public class DirectionComparator implements Comparator<Direction> {
 
-    private final int currX;
-    private final int currY;
-    private final int destX;
-    private final int destY;
-    private final String[][] floor;
+    private int currX;
+    private int currY;
+    private int destX;
+    private int destY;
+    private String[][] floor;
 
     public DirectionComparator(int currX, int currY, int destX, int destY,  String[][] floor) {
         this.currX = currX;
