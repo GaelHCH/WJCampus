@@ -8,7 +8,7 @@
     android:background="#AFE1AF"
     tools:context=".ui.home.HomeFragment">
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/searchRoom"
         android:layout_width="296dp"
         android:layout_height="39dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.047">
 
-    </SearchView>
+    </androidx.appcompat.widget.SearchView>
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -128,6 +128,12 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
         app:layout_constraintVertical_bias="0.203">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="464dp"
+            android:id="@+id/homeScreenRoomsList"
+            />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -69,8 +69,8 @@ public class SettingsFragment extends Fragment {
                     //Home screen components ***
 
                     //Background
-                    ConstraintLayout homeScreenMainContainerView = (ConstraintLayout) view.findViewById(R.id.homeScreenMainContainer);
-                    homeScreenMainContainerView.setBackgroundColor(Color.RED);
+//                    ConstraintLayout homeScreenMainContainerView = (ConstraintLayout) view.findViewById(R.id.homeScreenMainContainer);
+//                    homeScreenMainContainerView.setBackgroundColor(Color.RED);
                     //Home-screen nodes background
 
                     //Home-screen nodes text & buttons
