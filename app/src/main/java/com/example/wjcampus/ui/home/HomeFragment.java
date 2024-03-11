@@ -20,12 +20,15 @@ import com.example.wjcampus.databinding.FragmentHomeBinding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private ArrayList<HomeScreenRoom> homeScreenRooms = new ArrayList<HomeScreenRoom>();
     private HomeScreenRoomsAdapter roomsAdapter;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,6 +46,60 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated (View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //Filtering list with the buttons on top
+        //Comp Lab Button
+        int compLabBTNID = getResources().getIdentifier("compLabBtn", "id", getContext().getPackageName());
+        Button compLabBTNVIew = view.findViewById(compLabBTNID);
+        compLabBTNVIew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //Workshop button
+        int mathBTNID = getResources().getIdentifier("mathBtn", "id", getContext().getPackageName());
+        Button mathBTNView = view.findViewById(mathBTNID);
+        mathBTNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Math lab button works");
+                
+
+            }
+        });
+
+        //Science Lab button
+        int scienceLabBTNID = getResources().getIdentifier("ScienceLabBtn", "id", getContext().getPackageName());
+        Button scienceLabBTNView = view.findViewById(scienceLabBTNID);
+        scienceLabBTNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //Gym button
+        int gymBTNID = getResources().getIdentifier("gymBtn", "id", getContext().getPackageName());
+        Button gymBTNView = view.findViewById(gymBTNID);
+        gymBTNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        //Courtyard button
+        int courtyardBTNID = getResources().getIdentifier("courtyardBtn", "id", getContext().getPackageName());
+        Button courtyardBTNView = view.findViewById(courtyardBTNID);
+        courtyardBTNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
 
         //Search view reference
         int searchRoomViewID = getResources().getIdentifier("searchRoom", "id", getContext().getPackageName());
@@ -66,8 +123,13 @@ public class HomeFragment extends Fragment {
         RecyclerView homeScreenRoomsView = view.findViewById(homeScreenRoomsViewID);
 
         //Creating the buttons for the nodes
-        Button nodeButton1 = new Button(getContext()); Button nodeButton2 = new Button(getContext()); Button nodeButton3 = new Button(getContext());
-        Button nodeButton4 = new Button(getContext()); Button nodeButton5 = new Button(getContext());
+        Button goButton = new Button(getContext());
+        goButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Goes to the map screen with value already in the dest section
+            }
+        });
 
         //Adding items to the saved rooms list
         //Ground floor
@@ -82,12 +144,32 @@ public class HomeFragment extends Fragment {
                 currRoom = "G"+a;
             }
             //Dealing with exceptions before adding
-            if (!GFloorExceptions.contains(currRoom)) homeScreenRooms.add(new HomeScreenRoom(currRoom, "Floor: G", R.drawable.classroom1, nodeButton1));
+            if (!GFloorExceptions.contains(currRoom)) homeScreenRooms.add(new HomeScreenRoom(currRoom, "Floor: G", R.drawable.classroom1, goButton));
         }
         currRoom = "";
 
         //First and second floor
-        List<String> restOfExceptions = Arrays.asList("s", "s");
+        List<String> restOfExceptions = Arrays.asList("103", "112", "119", "120", "139", "157", "161", "162", "163", "164", "170", "171", "176", "177", "178", "179", "180", "181", "182", "183", "184", "185", "186",
+                "187", "188", "189", "197", "198", "201", "202", "206", "212", "216", "217", "218", "219", "240", "251", "252", "253");
+        for (int a = 101; a < 259; a++) {
+            currRoom = String.valueOf(a);
+            if (!restOfExceptions.contains(currRoom)) {
+                if (currRoom.substring(0,1).equals("1")) {
+                    homeScreenRooms.add(new HomeScreenRoom(currRoom, "Floor: 1st", R.drawable.classroom1, goButton));
+                }
+                else {
+                    homeScreenRooms.add(new HomeScreenRoom(currRoom, "Floor: 2nd", R.drawable.classroom1, goButton));
+                }
+            }
+        }
+
+        //Adding the rest of the building
+        homeScreenRooms.add(new HomeScreenRoom("Main Office", "Floor: 1st", R.drawable.classroom1, goButton));
+        homeScreenRooms.add(new HomeScreenRoom("Auditorium", "Floor: 1st", R.drawable.classroom1, goButton));
+        homeScreenRooms.add(new HomeScreenRoom("Court yard 1", "Floor: 1st", R.drawable.classroom1, goButton));
+        homeScreenRooms.add(new HomeScreenRoom("Court yard 2", "Floor: 1st", R.drawable.classroom1, goButton));
+        homeScreenRooms.add(new HomeScreenRoom("Cafeteria", "Floor: 1st", R.drawable.classroom1, goButton));
+        homeScreenRooms.add(new HomeScreenRoom("TV Studio", "Floor: 1st", R.drawable.classroom1, goButton));
 
 //        homeScreenRooms.add(new HomeScreenRoom("G03", "Floor: G", R.drawable.classroom1, nodeButton1));
 //        homeScreenRooms.add(new HomeScreenRoom("124", "Floor: 2", R.drawable.classroom1, nodeButton2));
@@ -103,20 +185,32 @@ public class HomeFragment extends Fragment {
     }
 
     private void filterList(String text) {
-        ArrayList<HomeScreenRoom> filteredRoomList= new ArrayList<HomeScreenRoom>();
+        ArrayList<HomeScreenRoom> filteredRoomList = new ArrayList<HomeScreenRoom>();
         for (HomeScreenRoom currRoom: homeScreenRooms) {
             if (currRoom.getRoomNum().toLowerCase().contains(text.toLowerCase())) {
                 filteredRoomList.add(currRoom);
 
             }
         }
-
         //If list is empty report this to user
         if (filteredRoomList.isEmpty()) {
-            Toast.makeText(getContext(), "No rooms found : (", Toast.LENGTH_SHORT).show();
+//            String regex = "[a-zA-Z&&[^G]]+";
+//            Pattern pattern = Pattern.compile(regex);
+//            Matcher matcher = pattern.matcher(text);
+//            boolean justText = matcher.matches();
+//
+//            if (justText) {
+//                Toast.makeText(getContext(), "Please enter room NUMBER", Toast.LENGTH_SHORT).show();
+//            }
+//            else {
+//                Toast.makeText(getContext(), "No rooms found", Toast.LENGTH_SHORT).show();
+//            }
+            Toast.makeText(getContext(), "No rooms found", Toast.LENGTH_SHORT).show();
+
         }
         else {
             roomsAdapter.setFilteredList(filteredRoomList);
         }
+
     }
 }
