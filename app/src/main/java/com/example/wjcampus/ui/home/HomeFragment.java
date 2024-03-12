@@ -50,14 +50,19 @@ public class HomeFragment extends Fragment {
         //Filtering list with the buttons on top
         //Getting all of the rooms for each button
         List<String> mathRooms = Arrays.asList("225", "227", "229", "230", "231", "232", "233", "234", "237", "238", "239", "241", "245", "247", "255", "257", "258");
-        List<String> compRooms = Arrays.asList("248", "G10", "");
+        List<String> techRooms = Arrays.asList("248", "208", "211");
+        List<String> englishRooms = Arrays.asList("G21", "121", "191", "192", "194", "196", "136", "135", "132");
+        List<String> scienceRooms = Arrays.asList("246", "207", "213", "214", "223", "222", "221", "220", "205", "204", "200", "203", "256", "254");
+        List<String> artRooms = Arrays.asList("190B", "G83", "G82", "G84", "G85", "G86", "G87");
 
         //Comp Lab Button
-        int compLabBTNID = getResources().getIdentifier("compLabBtn", "id", getContext().getPackageName());
-        Button compLabBTNVIew = view.findViewById(compLabBTNID);
-        compLabBTNVIew.setOnClickListener(new View.OnClickListener() {
+        int techBTNID = getResources().getIdentifier("techBtn", "id", getContext().getPackageName());
+        Button techBTNVIew = view.findViewById(techBTNID);
+        techBTNVIew.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("Tech button works");
+                specificFilterList(techRooms);
 
             }
         });
@@ -69,7 +74,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 System.out.println("Math lab button works");
-
+                specificFilterList(mathRooms);
             }
         });
 
@@ -79,7 +84,7 @@ public class HomeFragment extends Fragment {
         scienceLabBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                specificFilterList(scienceRooms);
             }
         });
 
@@ -89,7 +94,17 @@ public class HomeFragment extends Fragment {
         englishBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                specificFilterList(englishRooms);
+            }
+        });
 
+        //Art button
+        int artBTNID = getResources().getIdentifier("artBtn", "id", getContext().getPackageName());
+        Button artBTNView = view.findViewById(artBTNID);
+        artBTNView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                specificFilterList(artRooms);
             }
         });
 
@@ -99,7 +114,7 @@ public class HomeFragment extends Fragment {
         courtyardBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                filterList("Court yard 1"); filterList("Court yard 2");
+                filterList("Court yard");
             }
         });
 
@@ -187,6 +202,7 @@ public class HomeFragment extends Fragment {
 
     }
 
+    //Filtering the list for the search bar
     private void filterList(String text) {
         ArrayList<HomeScreenRoom> filteredRoomList = new ArrayList<HomeScreenRoom>();
         for (HomeScreenRoom currRoom: homeScreenRooms) {
@@ -215,5 +231,20 @@ public class HomeFragment extends Fragment {
             roomsAdapter.setFilteredList(filteredRoomList);
         }
 
+    }
+
+    //Filtering the list for the buttons
+    private void specificFilterList(List<String> rooms) {
+        ArrayList<HomeScreenRoom> filteredRoomList = new ArrayList<HomeScreenRoom>();
+
+        for (int a = 0; a < rooms.size(); a++) {
+            for (HomeScreenRoom currRoom: homeScreenRooms) {
+                if (currRoom.getRoomNum().equals(rooms.get(a))) {
+                    filteredRoomList.add(currRoom);
+                }
+            }
+        }
+
+        roomsAdapter.setFilteredList(filteredRoomList);
     }
 }

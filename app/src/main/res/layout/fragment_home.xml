@@ -42,13 +42,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/compLabBtn"
+                android:id="@+id/techBtn"
                 android:layout_width="125dp"
                 android:layout_height="40dp"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/alata"
-                android:text="Computer Lab"
+                android:text="Tech"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="14sp">
 
@@ -91,6 +91,20 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/alata"
                 android:text="English"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="14sp">
+
+
+            </Button>
+
+            <Button
+                android:id="@+id/artBtn"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/alata"
+                android:text="Art"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="14sp">
 
