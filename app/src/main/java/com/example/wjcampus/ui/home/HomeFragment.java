@@ -48,6 +48,10 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //Filtering list with the buttons on top
+        //Getting all of the rooms for each button
+        List<String> mathRooms = Arrays.asList("225", "227", "229", "230", "231", "232", "233", "234", "237", "238", "239", "241", "245", "247", "255", "257", "258");
+        List<String> compRooms = Arrays.asList("248", "G10", "");
+
         //Comp Lab Button
         int compLabBTNID = getResources().getIdentifier("compLabBtn", "id", getContext().getPackageName());
         Button compLabBTNVIew = view.findViewById(compLabBTNID);
@@ -58,14 +62,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //Workshop button
+        //Math button
         int mathBTNID = getResources().getIdentifier("mathBtn", "id", getContext().getPackageName());
         Button mathBTNView = view.findViewById(mathBTNID);
         mathBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("Math lab button works");
-                
 
             }
         });
@@ -80,10 +83,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //Gym button
-        int gymBTNID = getResources().getIdentifier("gymBtn", "id", getContext().getPackageName());
-        Button gymBTNView = view.findViewById(gymBTNID);
-        gymBTNView.setOnClickListener(new View.OnClickListener() {
+        //English button
+        int englishBTNID = getResources().getIdentifier("englishBtn", "id", getContext().getPackageName());
+        Button englishBTNView = view.findViewById(englishBTNID);
+        englishBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -96,7 +99,7 @@ public class HomeFragment extends Fragment {
         courtyardBTNView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                filterList("Court yard 1"); filterList("Court yard 2");
             }
         });
 
