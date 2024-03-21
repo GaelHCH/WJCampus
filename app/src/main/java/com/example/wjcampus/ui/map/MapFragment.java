@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.wjcampus.R;
 import com.example.wjcampus.databinding.FragmentMapBinding;
 import com.ortiz.touchview.TouchImageView;
+
 import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -67,8 +68,6 @@ public class MapFragment extends Fragment {
         schoolMap = new SchoolMap();
 
         ScheduleHelper downloadTask = new ScheduleHelper();
-        downloadTask.execute("https://calendar.google.com/calendar/ical/wjhswebmaster%40gmail.com/public/basic.ics");
-
 
         allFloors = new Hashtable[3];
         allFloors[0] = Floors.getFloor(0);

@@ -1,13 +1,14 @@
 package com.example.wjcampus.ui.map;
 import android.os.AsyncTask;
 
+import com.example.wjcampus.ui.schedule.ScheduleFragment;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -16,10 +17,11 @@ import java.text.SimpleDateFormat;
 
 public class ScheduleHelper extends AsyncTask<String, Void, String> {
 
-    static Event[] data;
+    private Event[] data;
 
     protected String doInBackground(String... urls) {
         String result = null;
+
         try {
             // Create a URL object from the provided URL string
             URL url = new URL(urls[0]);
@@ -41,7 +43,9 @@ public class ScheduleHelper extends AsyncTask<String, Void, String> {
                 // Read the input stream and convert it to a string
                 result = convertInputStreamToString(inputStream);
 
-                data =breakIntoEvents(result);
+                data = breakIntoEvents(result);
+
+                ScheduleFragment.updateDatabase(data);
 
                 // Close the input stream
                 inputStream.close();
@@ -104,7 +108,7 @@ public class ScheduleHelper extends AsyncTask<String, Void, String> {
                 if(isTZID) {
                     values[0] = values[0].substring(22);
                 }
-                if(Integer.parseInt(values[0].substring(0,4)) >= 2022) {
+                if(Integer.parseInt(values[0].substring(0,4)) >= 2024) {
                     Event newEvent = new Event(values[0], values[1]);
                     eventStrings.add(newEvent);
                 }

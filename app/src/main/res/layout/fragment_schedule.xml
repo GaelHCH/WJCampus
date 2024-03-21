@@ -138,36 +138,34 @@
                     app:layout_constraintTop_toBottomOf="@+id/todaySchedule"
                     app:layout_constraintVertical_bias="0.197" />
 
-                <ImageView
-                    android:id="@+id/event1"
-                    android:layout_width="276dp"
-                    android:layout_height="160dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginEnd="68dp"
-                    android:src="@drawable/hardcodeevents"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/eventsLBL" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="650dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eventsLBL"
+                    app:layout_constraintVertical_bias="0.957"
+                    tools:layout_editor_absoluteX="0dp" />
 
-                <ImageView
-                    android:id="@+id/event2"
-                    android:layout_width="276dp"
-                    android:layout_height="160dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="68dp"
-                    android:src="@drawable/hardcodeevents"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/event1" />
+                <ImageButton
+                    android:id="@+id/leftSchedule"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:background="#228B22"
+                    android:src="@drawable/baseline_arrow_circle_left_24"
+                    app:iconSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/eventsLBL"
+                    app:layout_constraintEnd_toStartOf="@+id/eventsLBL" />
 
-                <ImageView
-                    android:id="@+id/event3"
-                    android:layout_width="276dp"
-                    android:layout_height="160dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="68dp"
-                    android:src="@drawable/hardcodeevents"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/event2" />
-
+                <ImageButton
+                    android:id="@+id/rightSchedule"
+                    android:layout_width="34dp"
+                    android:layout_height="wrap_content"
+                    android:background="#228B22"
+                    android:src="@drawable/baseline_arrow_circle_right_24"
+                    app:iconSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/eventsLBL"
+                    app:layout_constraintStart_toEndOf="@+id/eventsLBL" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
