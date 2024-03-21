@@ -222,6 +222,7 @@ public class MapFragment extends Fragment {
     public void goToFloor(View view, int floor) {
         mapView.setImageBitmap(bitMaps[floor]);
         pathView.setImageResource(pngMaps[floor]);
+        currFloor = floor;
         if (animationDrawable != null) {
             animationDrawable.setCurrentFloor(currFloor);
         }

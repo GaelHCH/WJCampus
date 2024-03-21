@@ -46,7 +46,7 @@ public class Path {
                     break;
             }
         }
-        return !((tops > 1 && lefts > 1) || (lefts > 1 && rights > 1) || (rights > 1 && lefts > 1) || (tops > 1 && bottoms > 1) || (bottoms > 1 && tops > 1));
+        return !((lefts > 1 && rights > 1) || (rights > 1 && lefts > 1) || (tops > 1 && bottoms > 1) || (bottoms > 1 && tops > 1));
     }
 
     private static List<Direction> getShortestPath(List<List<Direction>> paths) {
@@ -154,7 +154,7 @@ public class Path {
 
     private static List<Direction> shortestPath(int startX, int startY, int destX, int destY, Direction ignoreDir, String[][] floor, JunctionNode currNode, int jumps, JunctionNode[] floorNodes) {
 
-        if(jumps > 15) {
+        if(jumps > 20) {
             return null;
         }
 
