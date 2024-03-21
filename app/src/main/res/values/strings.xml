@@ -9,4 +9,12 @@
     <color name="GreyTint">#D1D0D0</color>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="allRooms">
+        <item>G02</item>
+        <item>G03</item>
+        <item>G04</item>
+        <item>G05</item>
+        <item>G07</item>
+    </string-array>
 </resources>

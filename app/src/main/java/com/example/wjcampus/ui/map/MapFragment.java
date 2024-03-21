@@ -111,23 +111,50 @@ public class MapFragment extends Fragment {
             }
         });
 
-        int upId = getResources().getIdentifier("floorUp", "id", getContext().getPackageName());
-        Button upBtn = view.findViewById(upId);
-        upBtn.setOnClickListener(new View.OnClickListener() {
+        int groundFloorBTNID = getResources().getIdentifier("groundFloorBtn", "id", getContext().getPackageName());
+        Button groundFloorBTN = view.findViewById(groundFloorBTNID);
+        groundFloorBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                floorUp(getView());
+                goToFloor(getView(),0);
             }
         });
 
-        int downId = getResources().getIdentifier("floorDown", "id", getContext().getPackageName());
-        Button downBtn = view.findViewById(downId);
-        downBtn.setOnClickListener(new View.OnClickListener() {
+        int firstFloorBTNID = getResources().getIdentifier("firstFloorBtn", "id", getContext().getPackageName());
+        Button firstFloorBTN = view.findViewById(firstFloorBTNID);
+        firstFloorBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                floorDown(getView());
+                goToFloor(getView(),1);
             }
         });
+
+        int secondFloorBTNID = getResources().getIdentifier("secondFloorBtn", "id", getContext().getPackageName());
+        Button secondFloorBTN = view.findViewById(secondFloorBTNID);
+        secondFloorBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToFloor(getView(),2);
+            }
+        });
+
+//        int upId = getResources().getIdentifier("floorUp", "id", getContext().getPackageName());
+//        Button upBtn = view.findViewById(upId);
+//        upBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                floorUp(getView());
+//            }
+//        });
+//
+//        int downId = getResources().getIdentifier("floorDown", "id", getContext().getPackageName());
+//        Button downBtn = view.findViewById(downId);
+//        downBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                floorDown(getView());
+//            }
+//        });
 
         int printId = getResources().getIdentifier("printBTN", "id", getContext().getPackageName());
         Button printBtn = view.findViewById(printId);
@@ -191,7 +218,16 @@ public class MapFragment extends Fragment {
         return bitFloor;
     }
 
+    //For the ground floor button
+    public void goToFloor(View view, int floor) {
+        mapView.setImageBitmap(bitMaps[floor]);
+        pathView.setImageResource(pngMaps[floor]);
+        if (animationDrawable != null) {
+            animationDrawable.setCurrentFloor(currFloor);
+        }
+    }
 
+    //The functions are for the original floor change buttons (we'll be using the new ones above)
     public void floorUp(View view) {
         if(currFloor < 2) {
             mapView.setImageBitmap(bitMaps[currFloor+1]);
